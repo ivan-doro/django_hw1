@@ -7,6 +7,7 @@ def index(request):
     return redirect('catalog')
 
 
+# function that sends phones list from db to html file, filtered if required
 def show_catalog(request):
     sort = request.GET.get("sort", None)
     if sort:
@@ -24,6 +25,7 @@ def show_catalog(request):
     return render(request, template, context)
 
 
+# function that sends particular phone info from db to html file based on slug
 def show_product(request, slug):
     template = 'product.html'
     context = {

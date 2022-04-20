@@ -2,6 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
+# Phone class with all the necessary fields. Phones are to be retrieved from phones.csv  to phones db
 class Phone(models.Model):
     id = models.SmallIntegerField(primary_key=True)
     name = models.CharField(max_length=50)
@@ -13,6 +14,7 @@ class Phone(models.Model):
 
     objects = models.Manager()
 
+    # override of  save function to set slug field to slugified version of name
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
 
